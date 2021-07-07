@@ -1,4 +1,5 @@
-﻿namespace LoggingKata
+﻿using System.Linq;
+namespace LoggingKata
 {
     /// <summary>
     /// Parses a POI file to locate all the Taco Bells

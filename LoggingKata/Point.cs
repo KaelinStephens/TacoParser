@@ -1,4 +1,5 @@
-﻿namespace LoggingKata
+﻿using System.Linq;
+namespace LoggingKata
 {
     public struct Point
     {

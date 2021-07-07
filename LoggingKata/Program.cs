@@ -2,6 +2,7 @@
 using System.Linq;
 using System.IO;
 using GeoCoordinatePortable;
+using System.Linq;
 
 namespace LoggingKata
 {
@@ -10,21 +11,21 @@ namespace LoggingKata
         static readonly ILog logger = new TacoLogger();
         const string csvPath = "TacoBell-US-AL.csv";
 
+        
         static void Main(string[] args)
         {
             // TODO:  Find the two Taco Bells that are the furthest from one another.
             // HINT:  You'll need two nested forloops ---------------------------
 
             logger.LogInfo("Log initialized");
-
-            // use File.ReadAllLines(path) to grab all the lines from your csv file
-            // Log and error if you get 0 lines and a warning if you get 1 line
-            var lines = File.ReadAllLines(csvPath);
-
-            logger.LogInfo($"Lines: {lines[0]}");
-
-            // Create a new instance of your TacoParser class
-            var parser = new TacoParser();
+            var csv = new CSVLines();
+            var lines = csv.GetCSVLines(csvPath);
+            foreach (var line in lines)
+            {
+                logger.LogInfo($"Lines: {line}");
+            }
+           
+            var parser = new TacoParser();     // Create a new instance of your TacoParser class
 
             // Grab an IEnumerable of locations using the Select command: var locations = lines.Select(parser.Parse);
             var locations = lines.Select(parser.Parse).ToArray();
